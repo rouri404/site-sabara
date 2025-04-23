@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Infantil - {% block title %}Cadastro de Pacientes{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .btn-primary {
+            background-color: #0161a4;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #014d84;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(1, 97, 164, 0.2);
+        }
+        .btn-secondary {
+            background-color: #7fb538;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #6a9a2d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(127, 181, 56, 0.2);
+        }
+        .btn-danger {
+            background-color: #ea0129;
+            transition: all 0.3s ease;
+        }
+        .btn-danger:hover {
+            background-color: #c80123;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(234, 1, 41, 0.2);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #0161a4;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        .active-nav:after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-['Poppins']">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center space-x-2">
+                    <div class="p-2 rounded-full bg-[#0161a4] text-white">
+                        <i class="fas fa-heartbeat text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-[#0161a4]">Hospital Infantil</span>
+                </div>
+                
+                <!-- Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{% url 'home' %}" class="nav-link text-gray-600 hover:text-[#0161a4] px-3 py-2 text-sm font-medium transition duration-300">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <a href="{% url 'cadastrar_paciente' %}" class="nav-link text-gray-600 hover:text-[#0161a4] px-3 py-2 text-sm font-medium transition duration-300">
+                        <i class="fas fa-user-plus mr-2"></i>Cadastrar
+                    </a>
+                    <a href="{% url 'listar_pacientes' %}" class="nav-link text-gray-600 hover:text-[#0161a4] px-3 py-2 text-sm font-medium transition duration-300">
+                        <i class="fas fa-list-ul mr-2"></i>Listar
+                    </a>
+                    <a href="{% url 'analise_dados' %}" class="nav-link text-gray-600 hover:text-[#0161a4] px-3 py-2 text-sm font-medium transition duration-300">
+                        <i class="fas fa-chart-bar mr-2"></i>Análise
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-gray-500 hover:text-[#0161a4] focus:outline-none" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="{% url 'home' %}" class="nav-link text-gray-600 hover:text-[#0161a4] px-3 py-2 text-sm font-medium transition duration-300">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <a href="{% url 'cadastrar_paciente' %}" class="nav-link text-gray-600 hover:text-[#0161a4] px-3 py-2 text-sm font-medium transition duration-300">
+                        <i class="fas fa-user-plus mr-2"></i>Cadastrar
+                    </a>
+                    <a href="{% url 'listar_pacientes' %}" class="nav-link text-gray-600 hover:text-[#0161a4] px-3 py-2 text-sm font-medium transition duration-300">
+                        <i class="fas fa-list-ul mr-2"></i>Listar
+                    </a>
+                    <a href="{% url 'analise_dados' %}" class="nav-link text-gray-600 hover:text-[#0161a4] px-3 py-2 text-sm font-medium transition duration-300">
+                        <i class="fas fa-chart-bar mr-2"></i>Análise
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %}
+        <div class="fixed top-24 left-0 right-0 z-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {% for message in messages %}
+                <div class="fade-in bg-white rounded-xl shadow-md p-4 mb-4 {% if message.tags == 'success' %}border-l-4 border-[#7fb538]{% else %}border-l-4 border-[#ea0129]{% endif %}">
+                    <p class="text-sm {% if message.tags == 'success' %}text-[#7fb538]{% else %}text-[#ea0129]{% endif %}">
+                        <i class="fas {% if message.tags == 'success' %}fa-check-circle{% else %}fa-exclamation-circle{% endif %} mr-2"></i>
+                        {{ message }}
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-10 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-[#0161a4] to-[#7fb538] py-8 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Hospital Infantil</h3>
+                    <p class="text-sm opacity-80">Cuidando com amor e tecnologia da saúde das crianças.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="hover:text-[#ea0129] transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-[#ea0129] transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-[#ea0129] transition"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{% url 'cadastrar_paciente' %}" class="text-sm opacity-80 hover:opacity-100 hover:text-[#ea0129] transition">Cadastrar Paciente</a></li>
+                        <li><a href="{% url 'listar_pacientes' %}" class="text-sm opacity-80 hover:opacity-100 hover:text-[#ea0129] transition">Lista de Pacientes</a></li>
+                        <li><a href="{% url 'analise_dados' %}" class="text-sm opacity-80 hover:opacity-100 hover:text-[#ea0129] transition">Análise de Dados</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contato</h3>
+                    <ul class="space-y-2">
+                        <li class="text-sm opacity-80"><i class="fas fa-phone-alt mr-2"></i> (00) 1234-5678</li>
+                        <li class="text-sm opacity-80"><i class="fas fa-envelope mr-2"></i> contato@hospitalinfantil.com</li>
+                        <li class="text-sm opacity-80"><i class="fas fa-map-marker-alt mr-2"></i> Rua Exemplo, 123 - Cidade</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-white border-opacity-20 text-center text-sm opacity-80">
+                © 2025 Hospital Infantil. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para alternar o menu mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Adiciona classe active ao link da página atual
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

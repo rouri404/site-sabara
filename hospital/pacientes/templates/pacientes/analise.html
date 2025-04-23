@@ -1,0 +1,30 @@
+{% extends 'pacientes/base.html' %}
+{% block title %}Análise de Dados{% endblock %}
+{% block content %}
+<div class="fade-in">
+    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+        <div class="p-8">
+            <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Análise</div>
+            <h1 class="block mt-2 text-3xl font-bold text-gray-800">Análise de Dados</h1>
+            <p class="mt-2 text-gray-500">Explore gráficos interativos para entender os dados dos pacientes.</p>
+            
+            <div class="mt-6 space-y-8">
+                <!-- Gráfico de Idade -->
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <h2 class="text-xl font-medium text-gray-800 mb-4"><i class="fas fa-chart-bar mr-2 text-[#0161a4]"></i>Distribuição por Idade</h2>
+                    <div class="border-t border-gray-200 pt-4">
+                        {{ grafico_idade | safe }}
+                    </div>
+                </div>
+                <!-- Gráfico de Atendimento -->
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <h2 class="text-xl font-medium text-gray-800 mb-4"><i class="fas fa-chart-pie mr-2 text-[#7fb538]"></i>Tipos de Atendimento</h2>
+                    <div class="border-t border-gray-200 pt-4">
+                        {{ grafico_atendimento | safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
