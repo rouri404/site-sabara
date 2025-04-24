@@ -6,23 +6,38 @@
         <div class="p-8">
             <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Análise</div>
             <h1 class="block mt-2 text-3xl font-bold text-gray-800">Análise de Dados</h1>
-            <p class="mt-2 text-gray-500">Explore gráficos interativos para entender os dados dos pacientes.</p>
+            <p class="mt-2 text-gray-500">Visualize estatísticas detalhadas dos pacientes cadastrados.</p>
             
-            <div class="mt-6 space-y-8">
-                <!-- Gráfico de Idade -->
-                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
-                    <h2 class="text-xl font-medium text-gray-800 mb-4"><i class="fas fa-chart-bar mr-2 text-[#0161a4]"></i>Distribuição por Idade</h2>
-                    <div class="border-t border-gray-200 pt-4">
-                        {{ grafico_idade | safe }}
-                    </div>
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Distribuição por Idade -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2 class="text-lg font-semibold text-[#0161a4] mb-4">Distribuição por Idade</h2>
+                    {{ graficos.idade|safe }}
                 </div>
-                <!-- Gráfico de Atendimento -->
-                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
-                    <h2 class="text-xl font-medium text-gray-800 mb-4"><i class="fas fa-chart-pie mr-2 text-[#7fb538]"></i>Tipos de Atendimento</h2>
-                    <div class="border-t border-gray-200 pt-4">
-                        {{ grafico_atendimento | safe }}
-                    </div>
+                
+                <!-- Tipo de Atendimento -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2 class="text-lg font-semibold text-[#0161a4] mb-4">Tipos de Atendimento</h2>
+                    {{ graficos.atendimento|safe }}
                 </div>
+                
+                <!-- Distribuição por Sexo -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2 class="text-lg font-semibold text-[#7fb538] mb-4">Distribuição por Sexo</h2>
+                    {{ graficos.sexo|safe }}
+                </div>
+                
+                <!-- Cadastros por Data -->
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h2 class="text-lg font-semibold text-[#ea0129] mb-4">Cadastros por Data</h2>
+                    {{ graficos.cadastros|safe }}
+                </div>
+            </div>
+            
+            <div class="mt-6">
+                <a href="{% url 'listar_pacientes' %}" class="btn-primary text-white py-3 px-6 rounded-lg inline-flex items-center hover:bg-[#014080] transition-transform transform hover:scale-105">
+                    <i class="fas fa-arrow-left mr-2"></i> Voltar para Lista
+                </a>
             </div>
         </div>
     </div>

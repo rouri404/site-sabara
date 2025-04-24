@@ -1,0 +1,25 @@
+{% extends 'pacientes/base.html' %}
+{% block title %}Confirmar Exclusão{% endblock %}
+{% block content %}
+<div class="fade-in">
+    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover max-w-md mx-auto mt-10">
+        <div class="p-8">
+            <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Confirmação</div>
+            <h1 class="block mt-2 text-2xl font-bold text-gray-800">Excluir Paciente</h1>
+            <p class="mt-2 text-gray-500">Tem certeza que deseja excluir o paciente <strong>{{ paciente.nome }}</strong>? Esta ação não pode ser desfeita.</p>
+            
+            <form method="post" action="{% url 'excluir_paciente' paciente.id %}" class="mt-6">
+                {% csrf_token %}
+                <div class="flex justify-end space-x-4">
+                    <button type="submit" class="btn-danger text-white py-3 px-6 rounded-lg flex items-center">
+                        <i class="fas fa-trash mr-2"></i> Excluir
+                    </button>
+                    <a href="{% url 'listar_pacientes' %}" class="btn-secondary text-white py-3 px-6 rounded-lg flex items-center">
+                        <i class="fas fa-times mr-2"></i> Cancelar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

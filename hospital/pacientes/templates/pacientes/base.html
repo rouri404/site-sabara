@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital Infantil - {% block title %}Cadastro de Pacientes{% endblock %}</title>
+    <title>Sabará Hospital Infantil - {% block title %}Cadastro de Pacientes{% endblock %}</title>
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static 'assets/favicon.png' %}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <style>
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -76,12 +79,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center space-x-2">
-                    <div class="p-2 rounded-full bg-[#0161a4] text-white">
-                        <i class="fas fa-heartbeat text-xl"></i>
-                    </div>
-                    <span class="text-2xl font-bold text-[#0161a4]">Hospital Infantil</span>
-                </div>
+                <a href="{% url 'home' %}" class="flex-shrink-0 flex items-center">
+                    <img src="{% static 'assets/logo.png' %}" alt="Sabará Hospital Infantil" class="max-w-[140px] h-auto">
+                </a>
                 
                 <!-- Menu -->
                 <div class="hidden md:flex items-center space-x-8">
@@ -150,37 +150,42 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-r from-[#0161a4] to-[#7fb538] py-8 text-white">
+    <footer class="bg-gradient-to-r from-[#0161a4] to-[#0434a8] py-8 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Hospital Infantil</h3>
+                    <img src="{% static 'assets/logo.png' %}" alt="Sabará Hospital Infantil" class="max-w-[140px] h-auto mb-4">
+                    <h3 class="text-xl font-bold mb-2">Sabará Hospital Infantil</h3>
                     <p class="text-sm opacity-80">Cuidando com amor e tecnologia da saúde das crianças.</p>
-                    <div class="mt-4 flex space-x-4">
-                        <a href="#" class="hover:text-[#ea0129] transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="hover:text-[#ea0129] transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="hover:text-[#ea0129] transition"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Links Rápidos</h3>
-                    <ul class="space-y-2">
-                        <li><a href="{% url 'cadastrar_paciente' %}" class="text-sm opacity-80 hover:opacity-100 hover:text-[#ea0129] transition">Cadastrar Paciente</a></li>
-                        <li><a href="{% url 'listar_pacientes' %}" class="text-sm opacity-80 hover:opacity-100 hover:text-[#ea0129] transition">Lista de Pacientes</a></li>
-                        <li><a href="{% url 'analise_dados' %}" class="text-sm opacity-80 hover:opacity-100 hover:text-[#ea0129] transition">Análise de Dados</a></li>
-                    </ul>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-4">Contato</h3>
                     <ul class="space-y-2">
-                        <li class="text-sm opacity-80"><i class="fas fa-phone-alt mr-2"></i> (00) 1234-5678</li>
-                        <li class="text-sm opacity-80"><i class="fas fa-envelope mr-2"></i> contato@hospitalinfantil.com</li>
-                        <li class="text-sm opacity-80"><i class="fas fa-map-marker-alt mr-2"></i> Rua Exemplo, 123 - Cidade</li>
+                        <li class="text-sm opacity-80"><i class="fas fa-map-marker-alt mr-2"></i> Av. Angélica, 1987 - São Paulo, SP</li>
+                        <li class="text-sm opacity-80"><i class="fas fa-map-pin mr-2"></i> CEP 01228-200</li>
+                        <li class="text-sm opacity-80"><i class="fas fa-phone-alt mr-2"></i> (11) 3155-2800 | (11) 3235-2800</li>
                     </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Siga-nos</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/hospitalsabara/" target="_blank" class="hover:text-[#ea0129] transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.facebook.com/HospitalSabara" target="_blank" class="hover:text-[#ea0129] transition">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="https://www.youtube.com/saudedainfancia" target="_blank" class="hover:text-[#ea0129] transition">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/hospital-infantil-sabara/" target="_blank" class="hover:text-[#ea0129] transition">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="mt-8 pt-6 border-t border-white border-opacity-20 text-center text-sm opacity-80">
-                © 2025 Hospital Infantil. Todos os direitos reservados.
+                © 2025 Sabará Hospital Infantil. Todos os direitos reservados.
             </div>
         </div>
     </footer>
@@ -204,5 +209,6 @@
             });
         });
     </script>
+    <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>

@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('cadastrar/', views.cadastrar_paciente, name='cadastrar_paciente'),
+    path('editar/<int:id>/', views.editar_paciente, name='editar_paciente'),
+    path('excluir/<int:id>/', views.excluir_paciente, name='excluir_paciente'),
     path('listar/', views.listar_pacientes, name='listar_pacientes'),
     path('analise/', views.analise_dados, name='analise_dados'),
 ]

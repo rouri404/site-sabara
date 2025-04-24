@@ -1,12 +1,12 @@
 {% extends 'pacientes/base.html' %}
-{% block title %}Cadastrar Paciente{% endblock %}
+{% block title %}Editar Paciente{% endblock %}
 {% block content %}
 <div class="fade-in">
     <div class="bg-gradient-to-r from-[#0161a4] to-[#eb0029] rounded-xl shadow-md overflow-hidden card-hover">
         <div class="p-8 bg-white bg-opacity-90">
-            <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Cadastro</div>
-            <h1 class="block mt-2 text-3xl font-bold text-gray-800">Cadastrar Paciente</h1>
-            <p class="mt-2 text-gray-500">Preencha os dados do paciente para registrar no sistema.</p>
+            <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Edição</div>
+            <h1 class="block mt-2 text-3xl font-bold text-gray-800">Editar Paciente</h1>
+            <p class="mt-2 text-gray-500">Atualize os dados do paciente {{ paciente.nome }}.</p>
             
             <!-- Exibir mensagens de erro -->
             {% if form.errors %}
@@ -27,7 +27,7 @@
                 </div>
             {% endif %}
             
-            <form method="post" action="{% url 'cadastrar_paciente' %}" class="mt-6 space-y-6" id="paciente-form">
+            <form method="post" action="{% url 'editar_paciente' paciente.id %}" class="mt-6 space-y-6" id="paciente-form">
                 {% csrf_token %}
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {% for field in form %}
