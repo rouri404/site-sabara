@@ -2,7 +2,44 @@ from django import forms
 from .models import Paciente
 from django.core.validators import EmailValidator
 
+# Lista de estados brasileiros
+ESTADOS_BRASILEIROS = [
+    ('AC', 'Acre'),
+    ('AL', 'Alagoas'),
+    ('AP', 'Amapá'),
+    ('AM', 'Amazonas'),
+    ('BA', 'Bahia'),
+    ('CE', 'Ceará'),
+    ('DF', 'Distrito Federal'),
+    ('ES', 'Espírito Santo'),
+    ('GO', 'Goiás'),
+    ('MA', 'Maranhão'),
+    ('MT', 'Mato Grosso'),
+    ('MS', 'Mato Grosso do Sul'),
+    ('MG', 'Minas Gerais'),
+    ('PA', 'Pará'),
+    ('PB', 'Paraíba'),
+    ('PR', 'Paraná'),
+    ('PE', 'Pernambuco'),
+    ('PI', 'Piauí'),
+    ('RJ', 'Rio de Janeiro'),
+    ('RN', 'Rio Grande do Norte'),
+    ('RS', 'Rio Grande do Sul'),
+    ('RO', 'Rondônia'),
+    ('RR', 'Roraima'),
+    ('SC', 'Santa Catarina'),
+    ('SP', 'São Paulo'),
+    ('SE', 'Sergipe'),
+    ('TO', 'Tocantins'),
+]
+
 class PacienteForm(forms.ModelForm):
+    endereco_estado = forms.ChoiceField(
+        choices=ESTADOS_BRASILEIROS,
+        widget=forms.Select(attrs={'class': 'estado-select'}),
+        label='Estado'
+    )
+
     class Meta:
         model = Paciente
         fields = [
@@ -15,7 +52,6 @@ class PacienteForm(forms.ModelForm):
             'observacoes': forms.Textarea(attrs={'rows': 4}),
             'cpf': forms.TextInput(attrs={'class': 'cpf-input', 'placeholder': '000.000.000-00'}),
             'telefone': forms.TextInput(attrs={'class': 'telefone-input', 'placeholder': '(XX) XXXXX-XXXX'}),
-            'endereco_estado': forms.Select(attrs={'class': 'estado-select'}),
             'tipo_atendimento': forms.Select(),
         }
         labels = {
