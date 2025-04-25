@@ -9,9 +9,6 @@ __pycache__/
 venv/
 .venv/
 
-# Banco de Dados SQLite
-db.sqlite3
-
 # Arquivos de Cache e Temporários
 *.cache
 *.tmp
