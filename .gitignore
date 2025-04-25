@@ -1,0 +1,39 @@
+# Python e Django
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.log
+
+# Ambiente Virtual
+venv/
+.venv/
+
+# Banco de Dados SQLite
+db.sqlite3
+
+# Arquivos de Cache e Temporários
+*.cache
+*.tmp
+*.bak
+
+# Arquivos Estáticos Coletados (STATIC_ROOT)
+static/
+
+# Arquivos de Configuração Sensíveis
+.env
+
+# IDEs e Editores
+.vscode/
+.idea/
+*.swp
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Outros
+*.egg-info/
+dist/
+build/
+*.egg
