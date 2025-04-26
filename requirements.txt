@@ -1,0 +1,5 @@
+pandas
+plotly
+django
+psycopg2
+faker
