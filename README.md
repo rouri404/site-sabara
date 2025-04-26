@@ -23,22 +23,20 @@ O **Sabará Hospital Infantil** é referência no cuidado pediátrico, e este si
 
 ### 🖼️ Veja o Sistema em Ação
 
-Aqui estão algumas capturas de tela do sistema em funcionamento:  
+Aqui estão algumas capturas de tela do sistema em funcionamento:
+-
 ![Screenshot da página inicial](screenshots/tela_principal.png)
-  A página inicial dá as boas-vindas com um menu intuitivo e design acolhedor.
+### A página inicial dá as boas-vindas com um menu intuitivo e design acolhedor.
 <br><br>
-
 ![Screenshot do formulário de cadastro](screenshots/cadastro.png)
-  Formulário elegante com máscaras para CPF e telefone, e validações em tempo real.
+### Formulário elegante com máscaras para CPF e telefone, e validações em tempo real.
 <br><br>
-
 ![Screenshot da página de listagem](screenshots/lista_pacientes.png)
-  Uma tabela clara para visualizar todos os pacientes cadastrados.
+### Uma tabela clara para visualizar todos os pacientes cadastrados.
 <br><br>
-
 ![Screenshot da análise de dados](screenshots/analise_dados.png)
-  Gráficos interativos mostrando a distribuição de pacientes por idade, sexo e mais.
-<br><br>
+### Gráficos interativos mostrando a distribuição de pacientes por idade, sexo e mais.
+
 
 ## ✨ Funcionalidades
 
