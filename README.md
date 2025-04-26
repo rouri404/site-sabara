@@ -158,11 +158,7 @@ Quer testar o sistema com dados realistas? Popule o banco com 200 pacientes fict
    ```bash
    pip install faker
    ```
-2. Use o comando personalizado:
-   ```bash
-   python manage.py populate_pacientes 200
-   ```
-   Ou via Django Shell:
+2. Use o para gerar pacientes:
    ```bash
    python manage.py shell
    >>> from pacientes.populate_pacientes import populate_pacientes
