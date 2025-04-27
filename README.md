@@ -23,15 +23,20 @@ O **Sabará Hospital Infantil** é referência no cuidado pediátrico, e este si
 
 ### 🖼️ Veja o Sistema em Ação
 
-Aqui estão algumas capturas de tela do sistema em funcionamento:  
-- **[Screenshot da página inicial](screenshots/tela_principal.png)**  
-  A página inicial dá as boas-vindas com um menu intuitivo e design acolhedor.  
-- **[Screenshot do formulário de cadastro](screenshots/cadastro.png)**  
-  Formulário elegante com máscaras para CPF e telefone, e validações em tempo real.  
-- **[Screenshot da página de listagem](screenshots/lista_pacientes.png)**  
-  Uma tabela clara para visualizar todos os pacientes cadastrados.  
-- **[Screenshot da análise de dados](screenshots/analise_dados.png)**  
-  Gráficos interativos mostrando a distribuição de pacientes por idade, sexo e mais.
+Aqui estão algumas capturas de tela do sistema em funcionamento:
+-
+![Screenshot da página inicial](screenshots/tela_principal.png)
+### A página inicial dá as boas-vindas com um menu intuitivo e design acolhedor.
+<br><br>
+![Screenshot do formulário de cadastro](screenshots/cadastro.png)
+### Formulário elegante com máscaras para CPF e telefone, e validações em tempo real.
+<br><br>
+![Screenshot da página de listagem](screenshots/lista_pacientes.png)
+### Uma tabela clara para visualizar todos os pacientes cadastrados.
+<br><br>
+![Screenshot da análise de dados](screenshots/analise_dados.png)
+### Gráficos interativos mostrando a distribuição de pacientes por idade, sexo e mais.
+
 
 ## ✨ Funcionalidades
 
@@ -153,11 +158,7 @@ Quer testar o sistema com dados realistas? Popule o banco com 200 pacientes fict
    ```bash
    pip install faker
    ```
-2. Use o comando personalizado:
-   ```bash
-   python manage.py populate_pacientes 200
-   ```
-   Ou via Django Shell:
+2. Use o para gerar pacientes:
    ```bash
    python manage.py shell
    >>> from pacientes.populate_pacientes import populate_pacientes
