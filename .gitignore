@@ -14,8 +14,6 @@ venv/
 *.tmp
 *.bak
 
-# Arquivos Estáticos Coletados (STATIC_ROOT)
-static/
 
 # Arquivos de Configuração Sensíveis
 .env
