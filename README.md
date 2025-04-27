@@ -14,29 +14,32 @@ Este é um projeto apaixonante que combina tecnologia e cuidado, criado para fac
 
 ## 🎯 Sobre o Projeto
 
-O **Sabará Hospital Infantil** é referência no cuidado pediátrico, e este sistema foi desenvolvido para ajudar na gestão de pacientes com até 18 anos. Com uma interface intuitiva e cheia de recursos, ele permite cadastrar pacientes, editar registros, visualizar dados em gráficos interativos e muito mais. Tudo isso com um design moderno e responsivo, perfeito para médicos, enfermeiros e administradores.
+O **Sabará Hospital Infantil** é referência no cuidado pediátrico, e este sistema foi desenvolvido para ajudar na gestão de pacientes com até 18 anos. Com uma interface intuitiva e cheia de recursos, ele permite cadastrar pacientes, editar registros, visualizar dados em gráficos interativos, sincronizar dados com dispositivos IoT, e muito mais. Tudo isso com um design moderno e responsivo, perfeito para médicos, enfermeiros e administradores.
 
 🚀 **Por que este projeto é especial?**  
 - Ele foi pensado para o público pediátrico, garantindo que apenas pacientes com até 18 anos sejam cadastrados.  
 - Oferece gráficos interativos para insights rápidos sobre os dados dos pacientes.  
+- Permite integração com dispositivos IoT para exibir informações em displays remotos.  
 - Tem validações rigorosas (como CPF e telefone) para garantir a qualidade dos dados.  
 
 ### 🖼️ Veja o Sistema em Ação
 
-Aqui estão algumas capturas de tela do sistema em funcionamento:
--
-![Screenshot da página inicial](screenshots/tela_principal.png)
-### A página inicial dá as boas-vindas com um menu intuitivo e design acolhedor.
-<br><br>
-![Screenshot do formulário de cadastro](screenshots/cadastro.png)
-### Formulário elegante com máscaras para CPF e telefone, e validações em tempo real.
-<br><br>
-![Screenshot da página de listagem](screenshots/lista_pacientes.png)
-### Uma tabela clara para visualizar todos os pacientes cadastrados.
-<br><br>
-![Screenshot da análise de dados](screenshots/analise_dados.png)
-### Gráficos interativos mostrando a distribuição de pacientes por idade, sexo e mais.
-
+Aqui estão algumas capturas de tela do sistema em funcionamento:  
+-  
+![Screenshot da página inicial](screenshots/tela_principal.png)  
+### A página inicial dá as boas-vindas com um menu intuitivo e design acolhedor.  
+<br><br>  
+![Screenshot do formulário de cadastro](screenshots/cadastro.png)  
+### Formulário elegante com máscaras para CPF e telefone, e validações em tempo real.  
+<br><br>  
+![Screenshot da página de listagem](screenshots/lista_pacientes.png)  
+### Uma tabela clara para visualizar todos os pacientes cadastrados.  
+<br><br>  
+![Screenshot da análise de dados](screenshots/analise_dados.png)  
+### Gráficos interativos mostrando a distribuição de pacientes por idade, sexo e mais.  
+<br><br>  
+![Screenshot da sincronização IoT](screenshots/sincronizar_iot.png)  
+### Sincronize informações de pacientes com displays conectados via ESP32.  
 
 ## ✨ Funcionalidades
 
@@ -58,9 +61,13 @@ Aqui estão os principais recursos do sistema, projetados para facilitar a vida 
     - Tipos de atendimento (em gráficos de pizza coloridos 🥧).  
     - Distribuição por sexo.  
     - Cadastros ao longo do tempo (em gráficos de linha 📈).  
+- **🌐 Sincronização IoT**:
+  - Envie informações de pacientes (nome e sala) para displays remotos conectados via ESP32.  
+  - Integração com Orion Context Broker para comunicação em tempo real.  
+  - Formato da mensagem: `'nome do paciente' SALA:'número da sala'` (ex.: "João Silva SALA:42").  
 - **📱 Interface Responsiva**:
   - Navegação perfeita em desktops e dispositivos móveis.  
-  - Menu mobile com ícones intuitivos (🏠 Home, ➕ Cadastrar, 📜 Listar, 📊 Análise).  
+  - Menu mobile com ícones intuitivos (🏠 Home, ➕ Cadastrar, 📜 Listar, 📊 Análise, 🌐 Sincronização IoT).  
 - **💬 Feedback ao Usuário**:
   - Mensagens de sucesso (em verde ✅) ou erro (em vermelho 🚨) com animações suaves.
 
@@ -76,6 +83,8 @@ O que torna este sistema único? Aqui estão alguns destaques:
   - Animações sutis, como `fadeIn` e efeitos de hover, para uma experiência visual incrível.  
 - **Análise Visual** 📊:  
   - Gráficos interativos que ajudam a entender os dados dos pacientes de forma rápida e clara.  
+- **Integração IoT** 🌐:  
+  - Comunicação com dispositivos IoT para exibir informações em tempo real em displays remotos.  
 - **Testes Facilitados** 🛠️:  
   - Um script personalizado (`populate_pacientes.py`) para gerar 200 pacientes fictícios com dados realistas, perfeito para testes.
 
@@ -89,6 +98,7 @@ Aqui está o arsenal tecnológico que dá vida ao projeto:
 | **Frontend**        | HTML5, Tailwind CSS, FontAwesome, Google Fonts (Poppins) 🎨 |
 | **Interatividade**  | JavaScript (máscaras de entrada, menu mobile) 📱 |
 | **Análise de Dados**| `pandas` + `plotly.express` 📈      |
+| **Integração IoT**  | `requests` + Orion Context Broker 🌐 |
 | **Dados Fictícios** | `faker` para geração de dados realistas 🌟 |
 
 ## 🚀 Como Começar?
@@ -149,6 +159,8 @@ Explore as funcionalidades do sistema com facilidade:
   Veja todos os pacientes cadastrados e edite/exclua se precisar.  
 - **📊 Análise de Dados**: `http://127.0.0.1:8000/analise/`  
   Visualize gráficos incríveis para entender os dados dos pacientes.  
+- **🌐 Sincronização IoT**: `http://127.0.0.1:8000/sincronizar-iot/`  
+  Selecione um paciente e uma sala (1 a 100) para enviar ao display conectado via ESP32.  
 - **🔐 Django Admin**: `http://127.0.0.1:8000/admin/`  
   Gerencie os dados com o superusuário criado.
 
@@ -179,5 +191,6 @@ Quer testar o sistema com dados realistas? Popule o banco com 200 pacientes fict
 - **Responsividade** 📱: Interface que funciona perfeitamente em desktops e dispositivos móveis.  
 - **Animações Suaves** ✨: Efeitos visuais como `fadeIn` e hover para uma experiência encantadora.  
 - **Gráficos Interativos** 📈: Use Plotly para explorar dados de forma visual e dinâmica.  
+- **Integração IoT** 🌐: Comunicação com Orion Context Broker para exibir dados em displays conectados via ESP32.
 
 💙 **Sabará Hospital Infantil** - Cuidando com amor e tecnologia da saúde das crianças! 💙
