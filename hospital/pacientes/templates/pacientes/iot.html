@@ -1,0 +1,43 @@
+{% extends 'pacientes/base.html' %}
+{% block title %}Sincronização IoT{% endblock %}
+{% block content %}
+<div class="fade-in">
+    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+        <div class="p-8">
+            <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Sincronização IoT</div>
+            <h1 class="block mt-2 text-3xl font-bold text-gray-800">Enviar Dados para Display</h1>
+            <p class="mt-2 text-gray-500">Selecione um paciente e a sala para enviar ao display conectado via ESP32.</p>
+
+            <!-- Formulário -->
+            <form method="POST" class="mt-6">
+                {% csrf_token %}
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Seleção de Paciente -->
+                    <div>
+                        <label for="paciente" class="block text-sm font-medium text-gray-700">Paciente</label>
+                        <select id="paciente" name="paciente" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-[#0161a4] focus:border-[#0161a4] sm:text-sm">
+                            <option value="">Selecione um paciente</option>
+                            {% for paciente in pacientes %}
+                                <option value="{{ paciente.id }}">{{ paciente.nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Número da Sala -->
+                    <div>
+                        <label for="numero_sala" class="block text-sm font-medium text-gray-700">Número da Sala (1-100)</label>
+                        <input type="number" id="numero_sala" name="numero_sala" min="1" max="100" class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#0161a4] focus:border-[#0161a4] sm:text-sm" placeholder="Ex.: 42" required>
+                    </div>
+                </div>
+
+                <!-- Botão de Envio -->
+                <div class="mt-6">
+                    <button type="submit" class="btn-primary text-white py-3 px-6 rounded-lg flex items-center">
+                        <i class="fas fa-sync-alt mr-2"></i> Sincronizar com Display
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

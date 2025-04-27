@@ -4,7 +4,7 @@ from .models import Paciente
 from .forms import PacienteForm
 import pandas as pd
 import plotly.express as px
-from django.http import HttpResponse
+import requests
 
 def home(request):
     return render(request, 'pacientes/home.html')
@@ -123,3 +123,63 @@ def analise_dados(request):
         }
     
     return render(request, 'pacientes/analise.html', {'graficos': graficos})
+
+def sincronizar_iot(request):
+    # Lista todos os pacientes
+    pacientes = Paciente.objects.all()
+
+    if request.method == 'POST':
+        paciente_id = request.POST.get('paciente')
+        numero_sala = request.POST.get('numero_sala')
+
+        # Validações
+        if not paciente_id or not numero_sala:
+            messages.error(request, 'Por favor, selecione um paciente e informe o número da sala.')
+            return render(request, 'pacientes/iot.html', {'pacientes': pacientes})
+
+        try:
+            numero_sala = int(numero_sala)
+            if numero_sala < 1 or numero_sala > 100:
+                messages.error(request, 'O número da sala deve estar entre 1 e 100.')
+                return render(request, 'pacientes/iot.html', {'pacientes': pacientes})
+        except ValueError:
+            messages.error(request, 'O número da sala deve ser um valor numérico.')
+            return render(request, 'pacientes/iot.html', {'pacientes': pacientes})
+
+        # Obtém o paciente selecionado
+        try:
+            paciente = Paciente.objects.get(id=paciente_id)
+        except Paciente.DoesNotExist:
+            messages.error(request, 'Paciente não encontrado.')
+            return render(request, 'pacientes/iot.html', {'pacientes': pacientes})
+
+        # Formata a mensagem
+        texto = f"{paciente.nome} SALA:{numero_sala}"
+
+        # Envia para o Orion Context Broker
+        URL_PATCH = "http://20.197.240.85:1026/v2/entities/Display001/attrs"
+        headers = {
+            "Content-Type": "application/json",
+            "Fiware-Service": "default",
+            "Fiware-ServicePath": "/"
+        }
+        payload = {
+            "text": {
+                "value": texto,
+                "type": "String"
+            }
+        }
+
+        try:
+            response = requests.patch(URL_PATCH, json=payload, headers=headers)
+            if response.status_code == 204:
+                messages.success(request, f"Texto enviado com sucesso: {texto}")
+            else:
+                messages.error(request, f"Erro ao enviar texto: HTTP {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            messages.error(request, f'Erro na requisição: {str(e)}')
+            print(f"Exceção na requisição ao Orion: {str(e)}")
+
+        return redirect('sincronizar_iot')
+
+    return render(request, 'pacientes/iot.html', {'pacientes': pacientes})

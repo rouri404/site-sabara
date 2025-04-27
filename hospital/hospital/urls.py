@@ -27,4 +27,5 @@ urlpatterns = [
     path('excluir/<int:id>/', views.excluir_paciente, name='excluir_paciente'),
     path('listar/', views.listar_pacientes, name='listar_pacientes'),
     path('analise/', views.analise_dados, name='analise_dados'),
+    path('sincronizar-iot/', views.sincronizar_iot, name='sincronizar_iot'),
 ]
