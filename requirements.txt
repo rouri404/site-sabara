@@ -3,3 +3,4 @@ plotly
 django
 psycopg2
 faker
+requests
