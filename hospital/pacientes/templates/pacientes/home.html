@@ -8,7 +8,7 @@
             <h1 class="block mt-2 text-3xl font-bold text-gray-800">Sistema de Cadastro</h1>
             <p class="mt-2 text-gray-500">Gerencie os pacientes do Sabará Hospital Infantil de forma simples e eficiente.</p>
             
-            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <a href="{% url 'cadastrar_paciente' %}" class="btn-primary text-white py-3 px-6 rounded-lg flex items-center justify-center">
                     <i class="fas fa-user-plus mr-2"></i> Cadastrar Paciente
                 </a>
@@ -17,6 +17,9 @@
                 </a>
                 <a href="{% url 'analise_dados' %}" class="bg-gradient-to-r from-[#eb0029] to-[#0161a4] text-white py-3 px-6 rounded-lg flex items-center justify-center hover:shadow-lg hover:transform hover:-translate-y-0.5 transition-all">
                     <i class="fas fa-chart-line mr-2"></i> Análise de Dados
+                </a>
+                <a href="{% url 'sincronizar_iot' %}" class="bg-gradient-to-r from-[#0161a4] to-[#ff4500] text-white py-3 px-6 rounded-lg flex items-center justify-center hover:shadow-lg hover:transform hover:-translate-y-0.5 transition-all">
+                    <i class="fas fa-sync-alt mr-2"></i> Sincronização IoT
                 </a>
             </div>
         </div>
