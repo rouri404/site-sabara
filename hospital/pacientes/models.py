@@ -47,7 +47,7 @@ class Paciente(models.Model):
 
     nome = models.CharField(max_length=200)
     cpf = models.CharField(max_length=14, unique=True, validators=[validate_cpf])
-    data_nascimento = models.DateField(validators=[validate_idade])
+    data_nascimento = models.DateField(validators=[validate_idade],verbose_name='Data de nascimento')
     sexo = models.CharField(max_length=10, choices=[('M', 'Masculino'), ('F', 'Feminino'), ('O', 'Outro')])
     endereco_rua = models.CharField(max_length=200, verbose_name='Rua', default='Rua Desconhecida')
     endereco_numero = models.CharField(max_length=10, blank=True, verbose_name='Número')
@@ -59,9 +59,9 @@ class Paciente(models.Model):
     email = models.EmailField(blank=True, null=True)
     tipo_atendimento = models.CharField(max_length=50, choices=TIPO_ATENDIMENTO_CHOICES)
     plano_saude = models.CharField(max_length=50, blank=True)  # Adicionado para compatibilidade com CSV
-    condicao_medica = models.CharField(max_length=100, blank=True)
+    condicao_medica = models.CharField(max_length=100, blank=True, verbose_name='Condição médica')
     data_cadastro = models.DateTimeField(auto_now_add=True)
-    observacoes = models.TextField(blank=True)
+    observacoes = models.TextField(blank=True, verbose_name='Observações')
 
     def __str__(self):
         return self.nome

@@ -5,7 +5,16 @@
     <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
         <div class="p-8">
             <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Sincronização IoT</div>
-            <h1 class="block mt-2 text-3xl font-bold text-gray-800">Enviar Dados para Display</h1>
+            <h1 class="block mt-2 text-3xl font-bold text-gray-800">
+                Enviar dados para o 
+                <span class="gatinho-sabara inline-flex items-center">
+                    <span class="gatinho-icon mr-2 animate-bounce">🐾</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0161a4] via-[#7fb538] to-[#ea0129] animate-gradient">
+                        Gatinho Sabará
+                    </span>
+                    <span class="gatinho-icon ml-2 animate-bounce">🐾</span>
+                </span>
+            </h1>
             <p class="mt-2 text-gray-500">Selecione um paciente e a sala para enviar ao display conectado via ESP32.</p>
 
             <!-- Formulário -->
@@ -40,4 +49,44 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* Gradiente Animado */
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    .animate-gradient {
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: gradient 4s ease infinite;
+    }
+
+    /* Efeito de Pulsação Suave */
+    @keyframes pulse {
+        0% { transform: scale(1); text-shadow: 0 0 3px rgba(127, 181, 56, 0.3); }
+        50% { transform: scale(1.03); text-shadow: 0 0 10px rgba(127, 181, 56, 0.6); }
+        100% { transform: scale(1); text-shadow: 0 0 3px rgba(127, 181, 56, 0.3); }
+    }
+    .gatinho-sabara:hover {
+        animation: pulse 2s infinite ease-in-out;
+    }
+
+    /* Estilo do Ícone de Gatinho */
+    .gatinho-icon {
+        font-size: 1.5rem;
+        display: inline-block;
+    }
+
+    /* Fallback para o Bounce (caso Tailwind falhe) */
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+    .animate-bounce {
+        animation: bounce 1s infinite;
+    }
+</style>
 {% endblock %}

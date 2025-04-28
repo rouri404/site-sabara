@@ -67,13 +67,13 @@
 <!-- IMask.js para máscaras -->
 <script src="https://unpkg.com/imask"></script>
 <script>
-    // Máscara para CPF
+    // Máscara CPF
     const cpfInput = document.querySelector('.cpf-input');
     IMask(cpfInput, {
         mask: '000.000.000-00'
     });
 
-    // Máscara para Telefone
+    // Máscara telefone
     const telefoneInput = document.querySelector('.telefone-input');
     IMask(telefoneInput, {
         mask: [
@@ -82,7 +82,7 @@
         ]
     });
 
-    // Validação de CPF
+    // Validação CPF
     function validateCPF(cpf) {
         cpf = cpf.replace(/[^\d]+/g, '');
         if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
@@ -98,13 +98,13 @@
         return remainder === parseInt(cpf[10]);
     }
 
-    // Validação de Telefone
+    // Validação telefone
     function validateTelefone(telefone) {
         const digits = telefone.replace(/[^\d]+/g, '');
         return digits.length === 10 || digits.length === 11;
     }
 
-    // Feedback visual para CPF
+    // Feedback CPF
     cpfInput.addEventListener('input', () => {
         const cpf = cpfInput.value;
         const errorDiv = document.getElementById('cpf-error');
@@ -128,7 +128,7 @@
         }
     });
 
-    // Feedback visual para Telefone
+    // Feedback telefone
     telefoneInput.addEventListener('input', () => {
         const telefone = telefoneInput.value;
         const errorDiv = document.getElementById('telefone-error');

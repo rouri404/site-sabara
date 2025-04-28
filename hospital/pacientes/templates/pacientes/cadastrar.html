@@ -1,6 +1,30 @@
 {% extends 'pacientes/base.html' %}
 {% block title %}Cadastrar Paciente{% endblock %}
 {% block content %}
+<style>
+    form label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 0.25rem;
+    }
+    form input, form select, form textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #D1D5DB;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+        color: #374151;
+        transition: border-color 0.3s;
+    }
+    form input:focus, form select:focus, form textarea:focus {
+        outline: none;
+        border-color: #0161a4;
+        box-shadow: 0 0 0 3px rgba(1, 97, 164, 0.1);
+    }
+</style>
+
 <div class="fade-in">
     <div class="bg-gradient-to-r from-[#0161a4] to-[#eb0029] rounded-xl shadow-md overflow-hidden card-hover">
         <div class="p-8 bg-white bg-opacity-90">
@@ -67,13 +91,13 @@
 <!-- IMask.js para máscaras -->
 <script src="https://unpkg.com/imask"></script>
 <script>
-    // Máscara para CPF
+    // Máscara CPF
     const cpfInput = document.querySelector('.cpf-input');
     IMask(cpfInput, {
         mask: '000.000.000-00'
     });
 
-    // Máscara para Telefone
+    // Máscara telefone
     const telefoneInput = document.querySelector('.telefone-input');
     IMask(telefoneInput, {
         mask: [
@@ -104,7 +128,7 @@
         return digits.length === 10 || digits.length === 11;
     }
 
-    // Feedback visual para CPF
+    // Feedback CPF
     cpfInput.addEventListener('input', () => {
         const cpf = cpfInput.value;
         const errorDiv = document.getElementById('cpf-error');
@@ -128,7 +152,7 @@
         }
     });
 
-    // Feedback visual para Telefone
+    // Feedback Telefone
     telefoneInput.addEventListener('input', () => {
         const telefone = telefoneInput.value;
         const errorDiv = document.getElementById('telefone-error');
@@ -152,28 +176,4 @@
         }
     });
 </script>
-
-<style>
-    form label {
-        display: block;
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: #374151;
-        margin-bottom: 0.25rem;
-    }
-    form input, form select, form textarea {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid #D1D5DB;
-        border-radius: 0.375rem;
-        font-size: 0.875rem;
-        color: #374151;
-        transition: border-color 0.3s;
-    }
-    form input:focus, form select:focus, form textarea:focus {
-        outline: none;
-        border-color: #0161a4;
-        box-shadow: 0 0 0 3px rgba(1, 97, 164, 0.1);
-    }
-</style>
 {% endblock %}

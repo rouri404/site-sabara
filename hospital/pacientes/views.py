@@ -169,7 +169,7 @@ def sincronizar_iot(request):
                 "type": "String"
             }
         }
-
+        
         try:
             response = requests.patch(URL_PATCH, json=payload, headers=headers)
             if response.status_code == 204:
