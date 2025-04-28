@@ -6,35 +6,90 @@
         <div class="p-8">
             <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Análise</div>
             <h1 class="block mt-2 text-3xl font-bold text-gray-800">Análise de Dados</h1>
-            <p class="mt-2 text-gray-500">Visualize estatísticas detalhadas dos pacientes cadastrados.</p>
-            
-            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Distribuição por Idade -->
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <h2 class="text-lg font-semibold text-[#0161a4] mb-4">Distribuição por Idade</h2>
-                    {{ graficos.idade|safe }}
+            <p class="mt-2 text-gray-500">Visualize estatísticas detalhadas e insights sobre os pacientes cadastrados.</p>
+
+            <!-- Resumo Estatístico -->
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-[#0161a4] text-white p-4 rounded-lg shadow-sm transform hover:scale-105 transition-transform">
+                    <div class="flex items-center">
+                        <i class="fas fa-users text-2xl mr-3"></i>
+                        <div>
+                            <h3 class="text-sm font-medium">Total de Pacientes</h3>
+                            <p class="text-xl font-semibold">{{ estatisticas.total_pacientes }}</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- Tipo de Atendimento -->
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <h2 class="text-lg font-semibold text-[#0161a4] mb-4">Tipos de Atendimento</h2>
-                    {{ graficos.atendimento|safe }}
+                <div class="bg-[#7fb538] text-white p-4 rounded-lg shadow-sm transform hover:scale-105 transition-transform">
+                    <div class="flex items-center">
+                        <i class="fas fa-child text-2xl mr-3"></i>
+                        <div>
+                            <h3 class="text-sm font-medium">Média de Idade</h3>
+                            <p class="text-xl font-semibold">{{ estatisticas.media_idade }} anos</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- Distribuição por Sexo -->
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <h2 class="text-lg font-semibold text-[#7fb538] mb-4">Distribuição por Sexo</h2>
-                    {{ graficos.sexo|safe }}
-                </div>
-                
-                <!-- Cadastros por Data -->
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <h2 class="text-lg font-semibold text-[#ea0129] mb-4">Cadastros por Data</h2>
-                    {{ graficos.cadastros|safe }}
+                <div class="bg-[#ea0129] text-white p-4 rounded-lg shadow-sm transform hover:scale-105 transition-transform">
+                    <div class="flex items-center">
+                        <i class="fas fa-clipboard-check text-2xl mr-3"></i>
+                        <div>
+                            <h3 class="text-sm font-medium">Com Observações</h3>
+                            <p class="text-xl font-semibold">{{ estatisticas.percent_observacoes }}%</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="mt-6">
+
+            <!-- Seção Demografia -->
+            <div class="mt-8">
+                <h2 class="text-xl font-semibold text-gray-800 flex items-center">
+                    <i class="fas fa-users mr-2 text-[#0161a4]"></i> Demografia
+                </h2>
+                <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Faixa Etária -->
+                    <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-[#0161a4]">
+                        <h3 class="text-lg font-semibold text-[#0161a4] mb-4">Faixa Etária dos Pacientes</h3>
+                        {{ graficos.faixa_etaria|safe }}
+                    </div>
+                    <!-- Distribuição por Gênero -->
+                    <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-[#7fb538]">
+                        <h3 class="text-lg font-semibold text-[#7fb538] mb-4">Distribuição por Gênero</h3>
+                        {{ graficos.genero|safe }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Atendimento -->
+            <div class="mt-8">
+                <h2 class="text-xl font-semibold text-gray-800 flex items-center">
+                    <i class="fas fa-stethoscope mr-2 text-[#ea0129]"></i> Atendimento
+                </h2>
+                <div class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Tipos de Atendimento -->
+                    <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-[#ea0129]">
+                        <h3 class="text-lg font-semibold text-[#ea0129] mb-4">Tipos de Atendimento</h3>
+                        {{ graficos.tipos_atendimento|safe }}
+                    </div>
+                    <!-- Pacientes com Observações -->
+                    <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-[#ff4500]">
+                        <h3 class="text-lg font-semibold text-[#ff4500] mb-4">Pacientes com Observações Adicionais</h3>
+                        {{ graficos.observacoes|safe }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção Histórico -->
+            <div class="mt-8">
+                <h2 class="text-xl font-semibold text-gray-800 flex items-center">
+                    <i class="fas fa-calendar-alt mr-2 text-[#1e90ff]"></i> Histórico
+                </h2>
+                <div class="mt-4 bg-gray-50 p-4 rounded-lg border-l-4 border-[#1e90ff]">
+                    <h3 class="text-lg font-semibold text-[#1e90ff] mb-4">Evolução de Cadastros ao Longo do Tempo</h3>
+                    {{ graficos.evolucao_cadastros|safe }}
+                </div>
+            </div>
+
+            <!-- Botão Voltar -->
+            <div class="mt-8">
                 <a href="{% url 'listar_pacientes' %}" class="btn-primary text-white py-3 px-6 rounded-lg inline-flex items-center hover:bg-[#014080] transition-transform transform hover:scale-105">
                     <i class="fas fa-arrow-left mr-2"></i> Voltar para Lista
                 </a>
@@ -42,4 +97,19 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* Ajustar tamanho dos gráficos */
+    #grafico-faixa-etaria, #grafico-tipos-atendimento, #grafico-genero, #grafico-evolucao-cadastros, #grafico-observacoes {
+        width: 100%;
+        height: 400px;
+    }
+
+    /* Melhorar responsividade */
+    @media (max-width: 1024px) {
+        #grafico-faixa-etaria, #grafico-tipos-atendimento, #grafico-genero, #grafico-evolucao-cadastros, #grafico-observacoes {
+            height: 300px;
+        }
+    }
+</style>
 {% endblock %}
