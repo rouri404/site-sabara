@@ -107,6 +107,7 @@ def analise_dados(request):
         graficos['faixa_etaria'] = fig_idade.to_html(full_html=False, div_id="grafico-faixa-etaria")
 
         # Tipos de Atendimento
+        df['tipo_atendimento'] = df['tipo_atendimento'].str.title()  # Capitaliza os valores
         fig_atendimento = px.pie(
             df, names='tipo_atendimento', 
             title='Tipos de Atendimento',
@@ -138,24 +139,6 @@ def analise_dados(request):
         )
         graficos['genero'] = fig_sexo.to_html(full_html=False, div_id="grafico-genero")
 
-        # Evolução de Cadastros ao Longo do Tempo
-        df['data_cadastro'] = pd.to_datetime(df['data_cadastro']).dt.date
-        cadastros_por_data = df.groupby('data_cadastro').size().reset_index(name='count')
-        fig_cadastros = px.line(
-            cadastros_por_data, x='data_cadastro', y='count', 
-            title='Evolução de Cadastros ao Longo do Tempo',
-            labels={'data_cadastro': 'Data de Cadastro', 'count': 'Número de Cadastros'},
-            color_discrete_sequence=['#ea0129'],
-            template='plotly_white'
-        )
-        fig_cadastros.update_layout(
-            xaxis_title="Data de Cadastro",
-            yaxis_title="Número de Cadastros",
-            title_font_size=18,
-            margin=dict(l=40, r=40, t=60, b=40)
-        )
-        graficos['evolucao_cadastros'] = fig_cadastros.to_html(full_html=False, div_id="grafico-evolucao-cadastros")
-
         # Pacientes com Observações Adicionais
         df['tem_observacoes'] = df['observacoes'].notnull() & (df['observacoes'] != '')
         df['tem_observacoes'] = df['tem_observacoes'].map({True: 'Com Observações', False: 'Sem Observações'})
@@ -183,7 +166,6 @@ def analise_dados(request):
             'faixa_etaria': "<p class='text-gray-500'>Nenhum dado disponível para faixa etária.</p>",
             'tipos_atendimento': "<p class='text-gray-500'>Nenhum dado disponível para tipos de atendimento.</p>",
             'genero': "<p class='text-gray-500'>Nenhum dado disponível para gênero.</p>",
-            'evolucao_cadastros': "<p class='text-gray-500'>Nenhum dado disponível para evolução de cadastros.</p>",
             'observacoes': "<p class='text-gray-500'>Nenhum dado disponível para observações adicionais.</p>",
         }
     

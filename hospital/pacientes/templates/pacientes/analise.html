@@ -77,17 +77,6 @@
                 </div>
             </div>
 
-            <!-- Seção Histórico -->
-            <div class="mt-8">
-                <h2 class="text-xl font-semibold text-gray-800 flex items-center">
-                    <i class="fas fa-calendar-alt mr-2 text-[#1e90ff]"></i> Histórico
-                </h2>
-                <div class="mt-4 bg-gray-50 p-4 rounded-lg border-l-4 border-[#1e90ff]">
-                    <h3 class="text-lg font-semibold text-[#1e90ff] mb-4">Evolução de Cadastros ao Longo do Tempo</h3>
-                    {{ graficos.evolucao_cadastros|safe }}
-                </div>
-            </div>
-
             <!-- Botão Voltar -->
             <div class="mt-8">
                 <a href="{% url 'listar_pacientes' %}" class="btn-primary text-white py-3 px-6 rounded-lg inline-flex items-center hover:bg-[#014080] transition-transform transform hover:scale-105">
@@ -100,14 +89,14 @@
 
 <style>
     /* Ajustar tamanho dos gráficos */
-    #grafico-faixa-etaria, #grafico-tipos-atendimento, #grafico-genero, #grafico-evolucao-cadastros, #grafico-observacoes {
+    #grafico-faixa-etaria, #grafico-tipos-atendimento, #grafico-genero, #grafico-observacoes {
         width: 100%;
         height: 400px;
     }
 
     /* Melhorar responsividade */
     @media (max-width: 1024px) {
-        #grafico-faixa-etaria, #grafico-tipos-atendimento, #grafico-genero, #grafico-evolucao-cadastros, #grafico-observacoes {
+        #grafico-faixa-etaria, #grafico-tipos-atendimento, #grafico-genero, #grafico-observacoes {
             height: 300px;
         }
     }
