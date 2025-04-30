@@ -12,6 +12,24 @@
 🌟 **Bem-vindo ao Sistema de Gerenciamento de Pacientes do Sabará Hospital Infantil!** 🌟  
 Este é um projeto apaixonante que combina tecnologia e cuidado, criado para facilitar o dia a dia de um hospital pediátrico. Nosso objetivo? Simplificar o cadastro, gerenciamento e análise de dados de pacientes, trazendo amor e tecnologia para a saúde das crianças! 💙
 
+### 👥 Membros do Grupo:
+- [Ana Luiza](https://github.com/anarand) -
+  <a href="https://www.linkedin.com/in/ana-luiza-santana-124023240/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white">
+  </a>
+- [Gabriel Couto](https://github.com/rouri404) -
+  <a href="https://www.linkedin.com/in/gabricouto/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin-icon">
+  </a>
+- [Gabriel Kato](https://github.com/kato8088) -
+  <a href="https://www.linkedin.com/in/gabrikato/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin-icon">
+  </a>
+- [João Vitor](https://github.com/joaomatosq) -
+  <a href="https://www.linkedin.com/in/joaomatosq/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="linkedin-icon">
+  </a>
+
 ## 🎯 Sobre o Projeto
 
 O **Sabará Hospital Infantil** é referência no cuidado pediátrico, e este sistema foi desenvolvido para ajudar na gestão de pacientes com até 18 anos. Com uma interface intuitiva e cheia de recursos, ele permite cadastrar pacientes, editar registros, visualizar dados em gráficos interativos, sincronizar dados com dispositivos IoT, e muito mais. Tudo isso com um design moderno e responsivo, perfeito para médicos, enfermeiros e administradores.
