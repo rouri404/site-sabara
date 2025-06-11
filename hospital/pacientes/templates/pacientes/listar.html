@@ -4,12 +4,21 @@
 <div class="fade-in">
     <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
         <div class="p-8">
-            <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Pacientes</div>
-            <h1 class="block mt-2 text-3xl font-bold text-gray-800">Lista de Pacientes</h1>
-            <p class="mt-2 text-gray-500">Visualize todos os pacientes cadastrados no sistema.</p>
+            <div class="animate-on-scroll">
+                <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Pacientes</div>
+                <h1 class="block mt-2 text-3xl font-bold text-gray-800">Lista de Pacientes</h1>
+                <p class="mt-2 text-gray-500">Visualize todos os pacientes cadastrados no sistema.</p>
+            </div>
             
+            <!-- Indicador de Total -->
+            <div class="mt-4 animate-on-scroll" style="transition-delay: 50ms;">
+                <div class="bg-gray-50 border-l-4 border-[#0161a4] text-gray-700 p-4 rounded-r-lg" role="alert">
+                    <p class="font-bold">Há <strong>{{ pacientes.paginator.count }}</strong> paciente{{ pacientes.paginator.count|pluralize }} registrado{{ pacientes.paginator.count|pluralize }} no sistema.</p>
+                </div>
+            </div>
+
             {% if pacientes %}
-                <div class="mt-6 overflow-x-auto">
+                <div class="mt-6 overflow-x-auto animate-on-scroll" style="transition-delay: 100ms;">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
@@ -40,11 +49,32 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!-- Paginação -->
+                <div class="mt-6 flex justify-center items-center space-x-4">
+                    {% if pacientes.has_previous %}
+                        <a href="?page=1" class="text-gray-500 hover:text-[#0161a4] transition-colors">&laquo; Primeira</a>
+                        <a href="?page={{ pacientes.previous_page_number }}" class="text-gray-500 hover:text-[#0161a4] transition-colors">
+                            <i class="fas fa-arrow-left mr-2"></i> Anterior
+                        </a>
+                    {% endif %}
+
+                    <span class="text-sm text-gray-700">
+                        Página {{ pacientes.number }} de {{ pacientes.paginator.num_pages }}
+                    </span>
+
+                    {% if pacientes.has_next %}
+                        <a href="?page={{ pacientes.next_page_number }}" class="text-gray-500 hover:text-[#0161a4] transition-colors">
+                            Próxima <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="?page={{ pacientes.paginator.num_pages }}" class="text-gray-500 hover:text-[#0161a4] transition-colors">Última &raquo;</a>
+                    {% endif %}
+                </div>
             {% else %}
-                <p class="mt-6 text-gray-500">Nenhum paciente cadastrado.</p>
+                <p class="mt-6 text-gray-500 animate-on-scroll" style="transition-delay: 100ms;">Nenhum paciente cadastrado.</p>
             {% endif %}
             
-            <div class="mt-6">
+            <div class="mt-6 animate-on-scroll" style="transition-delay: 200ms;">
                 <a href="{% url 'cadastrar_paciente' %}" class="btn-primary text-white py-3 px-6 rounded-lg inline-flex items-center">
                     <i class="fas fa-user-plus mr-2"></i> Cadastrar Novo Paciente
                 </a>

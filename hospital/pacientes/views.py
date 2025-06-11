@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Paciente
 from .forms import PacienteForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import pandas as pd
 import plotly.express as px
 import requests
@@ -71,7 +72,19 @@ def excluir_paciente(request, id):
     return render(request, 'pacientes/confirmar_exclusao.html', {'paciente': paciente})
 
 def listar_pacientes(request):
-    pacientes = Paciente.objects.all()
+    pacientes_list = Paciente.objects.all().order_by('-data_cadastro')
+    paginator = Paginator(pacientes_list, 15)  # Mostra 15 pacientes por página
+
+    page = request.GET.get('page')
+    try:
+        pacientes = paginator.page(page)
+    except PageNotAnInteger:
+        # Se a página não for um inteiro, exibe a primeira página.
+        pacientes = paginator.page(1)
+    except EmptyPage:
+        # Se a página estiver fora do intervalo (ex: 9999), exibe a última página de resultados.
+        pacientes = paginator.page(paginator.num_pages)
+
     return render(request, 'pacientes/listar.html', {'pacientes': pacientes})
 
 def analise_dados(request):

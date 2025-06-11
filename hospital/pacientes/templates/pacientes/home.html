@@ -1,59 +1,444 @@
 {% extends 'pacientes/base.html' %}
-{% block title %}Home{% endblock %}
+{% block full_title %}Hospital Sabará Infantil{% endblock %}
 {% block content %}
+<style>
+    @keyframes animate-blob-1 {
+        0% { transform: translate(-10%, -10%) rotate(0deg) scale(1.1); }
+        25% { transform: translate(20%, -30%) rotate(90deg) scale(1.4); }
+        50% { transform: translate(30%, 30%) rotate(180deg) scale(1.0); }
+        75% { transform: translate(-20%, 30%) rotate(270deg) scale(1.3); }
+        100% { transform: translate(-10%, -10%) rotate(360deg) scale(1.1); }
+    }
+    @keyframes animate-blob-2 {
+        0% { transform: translate(10%, 10%) rotate(0deg) scale(1.2); }
+        25% { transform: translate(-20%, 30%) rotate(-90deg) scale(1.3); }
+        50% { transform: translate(-30%, -30%) rotate(-180deg) scale(1.4); }
+        75% { transform: translate(20%, -30%) rotate(-270deg) scale(1.0); }
+        100% { transform: translate(10%, 10%) rotate(-360deg) scale(1.2); }
+    }
+    @keyframes animate-blob-3 {
+        0% { transform: translate(0, 0) rotate(0deg) scale(1.3); }
+        25% { transform: translate(30%, 20%) rotate(90deg) scale(1.1); }
+        50% { transform: translate(-20%, -30%) rotate(180deg) scale(1.4); }
+        75% { transform: translate(10%, -10%) rotate(270deg) scale(1.0); }
+        100% { transform: translate(0, 0) rotate(360deg) scale(1.3); }
+    }
+    .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(70px);
+        opacity: 0.4;
+        transition: transform 5s ease-in-out;
+    }
+    .blob-1 { animation: animate-blob-1 15s infinite alternate; }
+    .blob-2 { animation: animate-blob-2 20s infinite alternate; }
+    .blob-3 { animation: animate-blob-3 10s infinite alternate; }
+    .ticket-reel-container {
+        height: 2.75rem;
+        line-height: 2.75rem;
+        overflow: hidden;
+    }
+    #ticket-reel {
+        transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+    #ticket-reel > span {
+        display: block;
+    }
+</style>
+
 <div class="fade-in">
-    <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-        <div class="p-8">
-            <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Bem-vindo</div>
-            <h1 class="block mt-2 text-3xl font-bold text-gray-800">Sistema de Cadastro</h1>
-            <p class="mt-2 text-gray-500">Gerencie os pacientes do Sabará Hospital Infantil de forma simples e eficiente.</p>
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-[#0161a4] to-[#0434a8] text-white py-20 px-8 rounded-2xl shadow-2xl overflow-hidden">
+        <!-- Background Blobs -->
+        <div class="blob blob-1 w-72 h-72 bg-[#7fb538] -top-10 -left-10"></div>
+        <div class="blob blob-2 w-96 h-96 bg-[#eb0029] -bottom-20 -right-20"></div>
+        <div class="blob blob-3 w-60 h-60 bg-[#ff4500] bottom-20 right-40"></div>
+
+        <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="text-center md:text-left animate-on-scroll">
+                <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-4">Menos Ansiedade, Mais Sorrisos</h1>
+                <p class="max-w-xl text-lg md:text-xl opacity-90 mb-8" style="transition-delay: 150ms;">Transformamos a espera em um momento lúdico. Conheça o Gatinho Sabará, nossa solução inovadora para um atendimento pediátrico mais acolhedor.</p>
+                <a href="#projeto-gatinho-sabara" class="bg-[#7fb538] hover:bg-[#6a9a2d] text-white font-bold py-4 px-8 rounded-full text-lg transition-transform transform hover:scale-105 shadow-lg btn-pulse" style="transition-delay: 300ms;">
+                    <i class="fas fa-cat mr-2"></i> Conheça o Gatinho Sabará
+                </a>
+            </div>
+
+            <!-- Gatinho Display -->
+            <div class="flex justify-center items-center animate-on-scroll" style="transition-delay: 300ms;">
+                <div class="bg-white/90 p-3 rounded-2xl shadow-2xl w-full max-w-sm backdrop-blur-sm">
+                    <div class="bg-gradient-to-br from-[#017bcf] to-[#0161a4] rounded-xl p-8 text-center">
+                        <i class="fas fa-cat text-white text-6xl mb-4"></i>
+                        <p class="text-white font-medium text-lg mb-4">Seu atendimento está próximo:</p>
+                        <div class="bg-white/30 rounded-full py-2 px-6 inline-block">
+                            <div class="ticket-reel-container">
+                                <div id="ticket-reel" class="text-white font-bold text-4xl tracking-widest">
+                                    <span>B07</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 animate-on-scroll">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-800">Nossas Ferramentas</h2>
+            <p class="text-gray-500 mt-2">Soluções completas para a gestão e experiência do paciente.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Cadastrar Paciente -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg card-hover text-center flex flex-col justify-between animate-on-scroll" style="transition-delay: 100ms;">
+                <div>
+                    <div class="bg-[#0161a4] text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Registro de Pacientes</h3>
+                    <p class="text-gray-600 mb-4">Cadastro rápido, seguro e intuitivo de novos pacientes.</p>
+                </div>
+                <a href="{% url 'cadastrar_paciente' %}" class="inline-block bg-[#0161a4] hover:bg-[#014d84] text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105 shadow-md mt-4">Cadastrar</a>
+            </div>
+
+            <!-- Listar Pacientes -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg card-hover text-center flex flex-col justify-between animate-on-scroll" style="transition-delay: 200ms;">
+                <div>
+                    <div class="bg-[#7fb538] text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                        <i class="fas fa-list-ul"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Consulta de Dados</h3>
+                    <p class="text-gray-600 mb-4">Acesse o histórico e informações dos pacientes com facilidade.</p>
+                </div>
+                <a href="{% url 'listar_pacientes' %}" class="inline-block bg-[#7fb538] hover:bg-[#6a9a2d] text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105 shadow-md mt-4">Ver Pacientes</a>
+            </div>
+
+            <!-- Análise de Dados -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg card-hover text-center flex flex-col justify-between animate-on-scroll" style="transition-delay: 300ms;">
+                <div>
+                    <div class="bg-[#eb0029] text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Análise de Impacto</h3>
+                    <p class="text-gray-600 mb-4">Visualize como a tecnologia melhora a experiência do paciente.</p>
+                </div>
+                <a href="{% url 'analise_dados' %}" class="inline-block bg-[#eb0029] hover:bg-[#c80123] text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105 shadow-md mt-4">Ver Análises</a>
+            </div>
+
+            <!-- Gatinho Sabará -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg card-hover text-center flex flex-col justify-between animate-on-scroll" style="transition-delay: 400ms;">
+                <div>
+                    <div class="bg-[#ff4500] text-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                        <i class="fas fa-cat"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Projeto Gatinho Sabará</h3>
+                    <p class="text-gray-600 mb-4">Dispositivo IoT que exibe a senha de forma lúdica e acolhedora.</p>
+                </div>
+                <a href="{% url 'sincronizar_iot' %}" class="inline-block bg-[#ff4500] hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full transition-transform transform hover:scale-105 shadow-md mt-4">Ver Dispositivo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gatinho Sabará Project Section -->
+    <section id="projeto-gatinho-sabara" class="py-20 bg-gray-50 rounded-2xl animate-on-scroll">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800">Conheça o Projeto Gatinho Sabará</h2>
+                <p class="text-gray-500 mt-2">Uma iniciativa que une empatia e tecnologia para transformar a experiência pediátrica.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                <!-- Coluna de Texto -->
+                <div class="animate-on-scroll" style="transition-delay: 200ms;">
+                    <h3 class="text-3xl font-bold text-gray-800 mb-4">O Desafio: Acabar com a Ansiedade na Triagem</h3>
+                    <p class="text-gray-600 mb-6">Painéis eletrônicos e sons altos podem ser assustadores para crianças. O "Gatinho Sabará" nasceu para substituir esse sistema impessoal por uma interação lúdica e acolhedora, reduzindo o medo e o estresse desde o primeiro momento.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-[#7fb538] text-xl mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-700">Dispositivo Interativo e Lúdico</h4>
+                                <p class="text-gray-600">Um dispositivo físico em formato de gatinho com display OLED mostra a senha de atendimento com animações divertidas, como "olhinhos" piscando.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-[#7fb538] text-xl mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-700">Plataforma Conectada com FIWARE</h4>
+                                <p class="text-gray-600">Controlado remotamente pela equipe de saúde via FIWARE e um microcontrolador ESP32-C3, garantindo agilidade e segurança.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-[#7fb538] text-xl mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-700">Versão Web Higiênica e Acessível</h4>
+                                <p class="text-gray-600">Para garantir a segurança e higiene, uma versão web responsiva permite que a interação aconteça em celulares ou tablets.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Coluna de Imagem/Ilustração -->
+                <div class="text-center animate-on-scroll" style="transition-delay: 100ms;">
+                    <div class="bg-gradient-to-br from-[#0161a4]/80 to-[#7fb538]/80 rounded-full w-80 h-80 mx-auto flex items-center justify-center shadow-2xl p-10">
+                        <i class="fas fa-cat text-9xl text-white transform transition-transform duration-500 hover:scale-110"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How it works (integrado) -->
+            <div class="mt-20">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl font-bold text-gray-800">Como Funciona na Prática?</h3>
+                </div>
+                <div class="relative max-w-5xl mx-auto">
+                    <!-- Connecting line -->
+                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -translate-y-1/2"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                        <div class="text-center p-6 animate-on-scroll" style="transition-delay: 100ms;">
+                            <div class="relative inline-block">
+                                <div class="bg-white w-24 h-24 rounded-full flex items-center justify-center text-3xl text-[#0161a4] shadow-lg mx-auto mb-4 border-4 border-gray-200">
+                                    <i class="fas fa-user-nurse"></i>
+                                </div>
+                                <span class="absolute -top-2 -right-2 bg-[#0161a4] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm border-2 border-white">1</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-gray-700 mt-2">Acionamento</h3>
+                            <p class="text-gray-600 text-sm">O profissional de saúde inicia a chamada do próximo paciente pelo sistema.</p>
+                        </div>
+                        <div class="text-center p-6 animate-on-scroll" style="transition-delay: 200ms;">
+                            <div class="relative inline-block">
+                                <div class="bg-white w-24 h-24 rounded-full flex items-center justify-center text-3xl text-[#ff4500] shadow-lg mx-auto mb-4 border-4 border-gray-200">
+                                    <i class="fas fa-cat"></i>
+                                </div>
+                                <span class="absolute -top-2 -right-2 bg-[#ff4500] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm border-2 border-white">2</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-gray-700 mt-2">Ativação Lúdica</h3>
+                            <p class="text-gray-600 text-sm">O "Gatinho Sabará" (físico ou web) recebe o sinal e é ativado.</p>
+                        </div>
+                        <div class="text-center p-6 animate-on-scroll" style="transition-delay: 300ms;">
+                            <div class="relative inline-block">
+                                <div class="bg-white w-24 h-24 rounded-full flex items-center justify-center text-3xl text-[#eb0029] shadow-lg mx-auto mb-4 border-4 border-gray-200">
+                                    <i class="fas fa-paw"></i>
+                                </div>
+                                <span class="absolute -top-2 -right-2 bg-[#eb0029] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm border-2 border-white">3</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-gray-700 mt-2">Exibição da Senha</h3>
+                            <p class="text-gray-600 text-sm">A senha aparece com animações divertidas, como "olhinhos" piscando.</p>
+                        </div>
+                        <div class="text-center p-6 animate-on-scroll" style="transition-delay: 400ms;">
+                            <div class="relative inline-block">
+                                <div class="bg-white w-24 h-24 rounded-full flex items-center justify-center text-3xl text-[#7fb538] shadow-lg mx-auto mb-4 border-4 border-gray-200">
+                                    <i class="fas fa-child"></i>
+                                </div>
+                                <span class="absolute -top-2 -right-2 bg-[#7fb538] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm border-2 border-white">4</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-gray-700 mt-2">Chamada Amigável</h3>
+                            <p class="text-gray-600 text-sm">A criança identifica sua vez de forma positiva e sem estresse.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 animate-on-scroll">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-800">Validação e Feedback</h2>
+            <p class="text-gray-500 mt-2">O projeto foi apresentado e elogiado pela liderança e por profissionais da área.</p>
+        </div>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-[#0161a4] animate-on-scroll" style="transition-delay: 100ms;">
+                <p class="text-gray-600 italic mb-4">"Inovações como o 'Gatinho Sabará' mostram nosso compromisso em aliar tecnologia a um cuidado mais humano."</p>
+                <div class="flex items-center mt-4">
+                    <div class="ml-4">
+                        <p class="font-bold text-gray-800">Felipe Monti Lora</p>
+                        <p class="text-sm text-gray-500">CEO, Hospital Sabará Infantil</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-[#7fb538] animate-on-scroll" style="transition-delay: 200ms;">
+                <p class="text-gray-600 italic mb-4">"O protótipo ficou excelente. Sugerimos a criação de uma versão online, que possa ser acessada via celular ou tablet."</p>
+                <div class="flex items-center mt-4">
+                    <div class="ml-4">
+                        <p class="font-bold text-gray-800">Evandro Félix</p>
+                        <p class="text-sm text-gray-500">Diretor de Inovação</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-[#eb0029] animate-on-scroll" style="transition-delay: 300ms;">
+                <p class="text-gray-600 italic mb-4">"Elogiamos a escolha da plataforma FIWARE para o projeto e sugerimos que o próximo passo seja a criação de um aplicativo dedicado."</p>
+                <div class="flex items-center mt-4">
+                    <div class="ml-4">
+                        <p class="font-bold text-gray-800">Equipe Técnica</p>
+                        <p class="text-sm text-gray-500">Feedback da Implementação</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20">
+        <div class="text-center mb-16 animate-on-scroll">
+            <h2 class="text-4xl font-bold text-gray-800">Nossa Equipe</h2>
+            <p class="text-gray-500 mt-2">Os rostos por trás da inovação e do cuidado.</p>
+        </div>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+            <!-- Team Member: Gabriel Kato Peres -->
+            <div class="text-center animate-on-scroll" style="transition-delay: 100ms;">
+                <div class="relative inline-block group w-48 h-48 rounded-full overflow-hidden shadow-lg">
+                    <img src="https://github.com/kato8088.png" alt="Gabriel Kato Peres" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
+                        <div class="flex space-x-6">
+                            <a href="https://www.linkedin.com/in/gabrikato/" target="_blank" class="text-white hover:text-[#7fb538] transition-colors">
+                                <i class="fab fa-linkedin-in text-3xl"></i>
+                            </a>
+                            <a href="https://github.com/kato8088" target="_blank" class="text-white hover:text-[#7fb538] transition-colors">
+                                <i class="fab fa-github text-3xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="mt-6 text-xl font-bold text-gray-800">Gabriel Kato Peres</h3>
+                <p class="text-gray-500">RM560000</p>
+            </div>
+
+            <!-- Team Member: Gabriel Couto Ribeiro -->
+            <div class="text-center animate-on-scroll" style="transition-delay: 200ms;">
+                <div class="relative inline-block group w-48 h-48 rounded-full overflow-hidden shadow-lg">
+                    <img src="https://github.com/rouri404.png" alt="Gabriel Couto Ribeiro" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
+                        <div class="flex space-x-6">
+                            <a href="https://www.linkedin.com/in/gabricouto/" target="_blank" class="text-white hover:text-[#7fb538] transition-colors">
+                                <i class="fab fa-linkedin-in text-3xl"></i>
+                            </a>
+                            <a href="https://github.com/rouri404" target="_blank" class="text-white hover:text-[#7fb538] transition-colors">
+                                <i class="fab fa-github text-3xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="mt-6 text-xl font-bold text-gray-800">Gabriel Couto Ribeiro</h3>
+                <p class="text-gray-500">RM559579</p>
+            </div>
+
+            <!-- Team Member: João Vitor de Matos -->
+            <div class="text-center animate-on-scroll" style="transition-delay: 300ms;">
+                <div class="relative inline-block group w-48 h-48 rounded-full overflow-hidden shadow-lg">
+                    <img src="https://github.com/joaomatosq.png" alt="João Vitor de Matos" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
+                        <div class="flex space-x-6">
+                            <a href="https://www.linkedin.com/in/joaomatosq/" target="_blank" class="text-white hover:text-[#7fb538] transition-colors">
+                                <i class="fab fa-linkedin-in text-3xl"></i>
+                            </a>
+                            <a href="https://github.com/joaomatosq" target="_blank" class="text-white hover:text-[#7fb538] transition-colors">
+                                <i class="fab fa-github text-3xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="mt-6 text-xl font-bold text-gray-800">João Vitor de Matos</h3>
+                <p class="text-gray-500">RM559246</p>
+            </div>
             
-            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <a href="{% url 'cadastrar_paciente' %}" class="btn-primary text-white py-3 px-6 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-user-plus mr-2"></i> Cadastrar Paciente
-                </a>
-                <a href="{% url 'listar_pacientes' %}" class="btn-secondary text-white py-3 px-6 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-list-ul mr-2"></i> Ver Pacientes
-                </a>
-                <a href="{% url 'analise_dados' %}" class="bg-gradient-to-r from-[#eb0029] to-[#0161a4] text-white py-3 px-6 rounded-lg flex items-center justify-center hover:shadow-lg hover:transform hover:-translate-y-0.5 transition-all">
-                    <i class="fas fa-chart-line mr-2"></i> Análise de Dados
-                </a>
-                <a href="{% url 'sincronizar_iot' %}" class="bg-gradient-to-r from-[#0161a4] to-[#ff4500] text-white py-3 px-6 rounded-lg flex items-center justify-center hover:shadow-lg hover:transform hover:-translate-y-0.5 transition-all">
-                    <i class="fas fa-sync-alt mr-2"></i> Sincronização IoT
-                </a>
+            <!-- Team Member: Ana Luiza Santana da Rocha -->
+            <div class="text-center animate-on-scroll" style="transition-delay: 400ms;">
+                <div class="relative inline-block group w-48 h-48 rounded-full overflow-hidden shadow-lg">
+                    <img src="https://github.com/anarand.png" alt="Ana Luiza Santana da Rocha" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
+                        <div class="flex space-x-6">
+                            <a href="https://www.linkedin.com/in/ana-luiza-santana-124023240/" target="_blank" class="text-white hover:text-[#7fb538] transition-colors">
+                                <i class="fab fa-linkedin-in text-3xl"></i>
+                            </a>
+                            <a href="https://github.com/anarand" target="_blank" class="text-white hover:text-[#7fb538] transition-colors">
+                                <i class="fab fa-github text-3xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="mt-6 text-xl font-bold text-gray-800">Ana Luiza Santana da Rocha</h3>
+                <p class="text-gray-500">RM561194</p>
             </div>
         </div>
-        <div class="bg-gradient-to-r from-[#0161a4] to-[#7fb538] p-4 flex items-center justify-center">
-            <p class="text-white text-sm text-center">
-                <i class="fas fa-info-circle mr-2"></i> Sistema desenvolvido para melhorar a experiência no atendimento infantil
-            </p>
+    </section>
+
+    <!-- "Why Sabará" Section -->
+    <section class="py-20 bg-gray-50 rounded-2xl animate-on-scroll">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-800">Nosso Compromisso</h2>
+            <p class="text-gray-500 mt-2">A excelência no cuidado infantil é o que nos move.</p>
         </div>
-    </div>
-    
-    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded-xl shadow-md card-hover">
-            <div class="text-[#0161a4] text-3xl mb-4">
-                <i class="fas fa-user-md"></i>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-xl shadow-md card-hover transform transition-all duration-300 animate-on-scroll" style="transition-delay: 100ms;">
+                <div class="text-[#0161a4] text-4xl mb-4">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Atendimento Humanizado</h3>
+                <p class="mt-2 text-gray-600">Nossa equipe é treinada para oferecer o melhor e mais acolhedor atendimento às crianças e suas famílias.</p>
             </div>
-            <h3 class="text-xl font-bold text-gray-800">Atendimento Humanizado</h3>
-            <p class="mt-2 text-gray-600">Nossa equipe é treinada para oferecer o melhor atendimento às crianças.</p>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-md card-hover">
-            <div class="text-[#7fb538] text-3xl mb-4">
-                <i class="fas fa-heartbeat"></i>
+            
+            <div class="bg-white p-8 rounded-xl shadow-md card-hover transform transition-all duration-300 animate-on-scroll" style="transition-delay: 200ms;">
+                <div class="text-[#7fb538] text-4xl mb-4">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Tecnologia Avançada</h3>
+                <p class="mt-2 text-gray-600">Utilizamos os melhores equipamentos e sistemas para diagnóstico e tratamento precisos.</p>
             </div>
-            <h3 class="text-xl font-bold text-gray-800">Tecnologia Avançada</h3>
-            <p class="mt-2 text-gray-600">Utilizamos os melhores equipamentos para diagnóstico e tratamento.</p>
-        </div>
-        
-        <div class="bg-white p-6 rounded-xl shadow-md card-hover">
-            <div class="text-[#ea0129] text-3xl mb-4">
-                <i class="fas fa-child"></i>
+            
+            <div class="bg-white p-8 rounded-xl shadow-md card-hover transform transition-all duration-300 animate-on-scroll" style="transition-delay: 300ms;">
+                <div class="text-[#ea0129] text-4xl mb-4">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Ambiente Acolhedor</h3>
+                <p class="mt-2 text-gray-600">Espaços projetados para deixar as crianças confortáveis, seguras e felizes durante a estadia.</p>
             </div>
-            <h3 class="text-xl font-bold text-gray-800">Ambiente Acolhedor</h3>
-            <p class="mt-2 text-gray-600">Espaços projetados para deixar as crianças confortáveis e seguras.</p>
         </div>
-    </div>
+    </section>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const ticketReel = document.getElementById('ticket-reel');
+    if (!ticketReel) return;
+
+    const letters = 'ABC';
+    const generateRandomTicket = () => {
+        const letter = letters[Math.floor(Math.random() * letters.length)];
+        const number = String(Math.floor(Math.random() * 99) + 1).padStart(2, '0');
+        return `${letter}${number}`;
+    };
+
+    const updateTicketNumber = () => {
+        // Create the new ticket element and add it to the reel
+        const newTicket = document.createElement('span');
+        newTicket.textContent = generateRandomTicket();
+        ticketReel.appendChild(newTicket);
+
+        // Animate the transform to "roll" up to the new ticket
+        const reelHeight = ticketReel.firstElementChild.offsetHeight;
+        ticketReel.style.transform = `translateY(-${reelHeight}px)`;
+        
+        // After the transition, clean up the old ticket and reset the reel
+        setTimeout(() => {
+            // Use 'none' to snap back to position without animation
+            ticketReel.style.transition = 'none'; 
+            // Remove the old (first) ticket span
+            ticketReel.firstElementChild.remove();
+            // Reset the transform
+            ticketReel.style.transform = 'translateY(0)';
+            
+            // Re-enable the transition for the next run after a tiny delay
+            setTimeout(() => {
+                ticketReel.style.transition = 'transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+            }, 20);
+
+        }, 800); // Must match the CSS transition duration
+    };
+
+    // Initial change after a short delay
+    setTimeout(updateTicketNumber, 2000);
+
+    // Update every 10 seconds
+    setInterval(updateTicketNumber, 10000);
+});
+</script>
 {% endblock %}

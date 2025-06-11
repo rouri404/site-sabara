@@ -4,12 +4,14 @@
 <div class="fade-in">
     <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
         <div class="p-8">
-            <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Análise</div>
-            <h1 class="block mt-2 text-3xl font-bold text-gray-800">Análise de Dados</h1>
-            <p class="mt-2 text-gray-500">Visualize estatísticas detalhadas e insights sobre os pacientes cadastrados.</p>
+            <div class="animate-on-scroll">
+                <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Análise</div>
+                <h1 class="block mt-2 text-3xl font-bold text-gray-800">Análise de Dados</h1>
+                <p class="mt-2 text-gray-500">Visualize estatísticas detalhadas e insights sobre os pacientes cadastrados.</p>
+            </div>
 
             <!-- Resumo Estatístico -->
-            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 animate-on-scroll" style="transition-delay: 100ms;">
                 <div class="bg-[#0161a4] text-white p-4 rounded-lg shadow-sm transform hover:scale-105 transition-transform">
                     <div class="flex items-center">
                         <i class="fas fa-users text-2xl mr-3"></i>
@@ -40,7 +42,7 @@
             </div>
 
             <!-- Seção Demografia -->
-            <div class="mt-8">
+            <div class="mt-8 animate-on-scroll" style="transition-delay: 200ms;">
                 <h2 class="text-xl font-semibold text-gray-800 flex items-center">
                     <i class="fas fa-users mr-2 text-[#0161a4]"></i> Demografia
                 </h2>
@@ -59,7 +61,7 @@
             </div>
 
             <!-- Seção Atendimento -->
-            <div class="mt-8">
+            <div class="mt-8 animate-on-scroll" style="transition-delay: 300ms;">
                 <h2 class="text-xl font-semibold text-gray-800 flex items-center">
                     <i class="fas fa-stethoscope mr-2 text-[#ea0129]"></i> Atendimento
                 </h2>
@@ -78,7 +80,7 @@
             </div>
 
             <!-- Botão Voltar -->
-            <div class="mt-8">
+            <div class="mt-8 animate-on-scroll" style="transition-delay: 400ms;">
                 <a href="{% url 'listar_pacientes' %}" class="btn-primary text-white py-3 px-6 rounded-lg inline-flex items-center hover:bg-[#014080] transition-transform transform hover:scale-105">
                     <i class="fas fa-arrow-left mr-2"></i> Voltar para Lista
                 </a>

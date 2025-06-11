@@ -4,6 +4,7 @@
 *.pyd
 __pycache__/
 *.log
+db.sqlite3*
 
 # Ambiente Virtual
 venv/
@@ -13,7 +14,6 @@ venv/
 *.cache
 *.tmp
 *.bak
-
 
 # Arquivos de Configuração Sensíveis
 .env
@@ -32,3 +32,7 @@ Thumbs.db
 dist/
 build/
 *.egg
+
+# Django
+/staticfiles/
+/media/
