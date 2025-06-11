@@ -1,7 +1,9 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python Version"/>
-  <img src="https://img.shields.io/github/license/rouri404/site-sabara" alt="License"/>
-  <img src="https://img.shields.io/badge/status-active-brightgreen.svg" alt="Status"/>
+  <img src="https://img.shields.io/badge/Python-3.12-blue?logo=python&logoColor=yellow" alt="Python"/>
+  <img src="https://img.shields.io/badge/Django-5.2.1-green?logo=django" alt="Django"/>
+  <img src="https://img.shields.io/badge/Fiware-IoT-orange?logo=fiware" alt="Fiware"/>
+  <img src="https://img.shields.io/badge/TailwindCSS-Styling-38B2AC?logo=tailwind-css" alt="TailwindCSS"/>
+  <img src="https://img.shields.io/badge/Plotly-Graphs-3F4F75?logo=plotly" alt="Plotly"/>
 </p>
 
 <h1 align="center">🏥 Sabará Hospital Infantil - Sistema de Gerenciamento de Pacientes</h1>
@@ -39,25 +41,6 @@ O **Sabará Hospital Infantil** é referência no cuidado pediátrico, e este si
 - Oferece gráficos interativos para insights rápidos sobre os dados dos pacientes.  
 - Permite integração com dispositivos IoT para exibir informações em displays remotos.  
 - Tem validações rigorosas (como CPF e telefone) para garantir a qualidade dos dados.  
-
-### 🖼️ Veja o Sistema em Ação
-
-Aqui estão algumas capturas de tela do sistema em funcionamento:  
--  
-![Screenshot da página inicial](screenshots/tela_principal.png)  
-### A página inicial dá as boas-vindas com um menu intuitivo e design acolhedor.  
-<br><br>  
-![Screenshot do formulário de cadastro](screenshots/cadastro.png)  
-### Formulário elegante com máscaras para CPF e telefone, e validações em tempo real.  
-<br><br>  
-![Screenshot da página de listagem](screenshots/lista_pacientes.png)  
-### Uma tabela clara para visualizar todos os pacientes cadastrados.  
-<br><br>  
-![Screenshot da análise de dados](screenshots/analise_dados.png)  
-### Gráficos interativos mostrando a distribuição de pacientes por idade, sexo e mais.  
-<br><br>  
-![Screenshot da sincronização IoT](screenshots/sincronizar_iot.png)  
-### Sincronize informações de pacientes com displays conectados via ESP32.  
 
 ## ✨ Funcionalidades
 

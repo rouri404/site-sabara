@@ -5,9 +5,9 @@
     <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
         <div class="p-8">
             <div class="animate-on-scroll">
-                <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Pacientes</div>
-                <h1 class="block mt-2 text-3xl font-bold text-gray-800">Lista de Pacientes</h1>
-                <p class="mt-2 text-gray-500">Visualize todos os pacientes cadastrados no sistema.</p>
+            <div class="uppercase tracking-wide text-sm text-[#0161a4] font-semibold">Pacientes</div>
+            <h1 class="block mt-2 text-3xl font-bold text-gray-800">Lista de Pacientes</h1>
+            <p class="mt-2 text-gray-500">Visualize todos os pacientes cadastrados no sistema.</p>
             </div>
             
             <!-- Indicador de Total -->
@@ -16,7 +16,7 @@
                     <p class="font-bold">Há <strong>{{ pacientes.paginator.count }}</strong> paciente{{ pacientes.paginator.count|pluralize }} registrado{{ pacientes.paginator.count|pluralize }} no sistema.</p>
                 </div>
             </div>
-
+            
             {% if pacientes %}
                 <div class="mt-6 overflow-x-auto animate-on-scroll" style="transition-delay: 100ms;">
                     <table class="min-w-full divide-y divide-gray-200">
